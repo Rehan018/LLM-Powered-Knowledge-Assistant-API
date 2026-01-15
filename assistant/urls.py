@@ -1,15 +1,11 @@
 """
 URL Routing for the Assistant Application.
 
-EXPLANATION:
-This file defines the specific URL patterns belonging to the `assistant` app.
-It determines which View handles a specific URL path.
+This file handles the specific URL patterns for our 'assistant' app. 
+It maps the specific 'ask-question/' path to the view we just verified.
 
-Routes:
-- **'ask-question/'**: Maps to `AskQuestionView`.
-
-When included in the main `config/urls.py` with prefix `api/`, the final URL becomes:
-`POST http://localhost:8000/api/ask-question/`
+When this is hooked up to the main project URLs, the full endpoint becomes 
+'api/ask-question/'. This is where we will send our POST requests.
 """
 
 from django.urls import path

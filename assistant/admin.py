@@ -1,15 +1,11 @@
 """
 Django Admin Configuration.
 
-EXPLANATION:
-This file is used to register models with the Django Admin interface.
-The Admin interface is a built-in, ready-to-use user interface for database management.
+I use this file to register our models with the Django Admin interface. 
+This gives us a ready-made user interface to view and manage our database.
 
-To expose the models `KnowledgeDocument` and `InteractionLog` to the admin:
-1.  Import the models: `from .models import KnowledgeDocument, InteractionLog`
-2.  Register them: `admin.site.register(KnowledgeDocument)`
-
-This allows you to see uploaded files and user-bot interactions via the web UI.
+I've registered 'KnowledgeDocument' here so you can verify uploaded files, 
+and 'InteractionLog' so you can read through the Q&A history directly in your browser.
 """
 
 from django.contrib import admin

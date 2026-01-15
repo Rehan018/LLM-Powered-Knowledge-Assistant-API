@@ -1,14 +1,14 @@
 """
 URL configuration for the Knowledge Assistant API project.
 
-EXPLANATION:
-This file is the specific entry point for routing incoming HTTP requests.
-It defines the top-level URL patterns for the project.
-- It maps the 'admin/' route to Django's built-in admin interface.
-- It includes the 'assistant.urls' module for all requests starting with 'api/'.
-  (e.g., http://localhost:8000/api/ask-question/ -> handled by assistant/urls.py)
+This file acts as the main switchboard for our web requests. When a user (or API client) 
+hits our server, this file decides where that request should go.
 
-Think of this as the "Main Switchboard" that directs traffic to the correct app.
+I have set up two main paths:
+- The 'admin/' path which takes you to the built-in Django admin panel.
+- The 'api/' path which routes everything to our assistant app's URLs.
+
+So if someone calls /api/ask-question/, this file passes it along to the assistant app to handle.
 """
 from django.contrib import admin
 from django.urls import path, include

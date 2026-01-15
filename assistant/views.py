@@ -1,18 +1,16 @@
 """
 API Main Logic (Views) for the Knowledge Assistant.
 
-EXPLANATION:
-This file contains the API endpoints exposed to the user. It bridges the HTTP requests
-with the business logic (RAG Service).
+This file contains the API endpoints that users actually interact with. It acts as a bridge 
+between the incoming request and our business logic.
 
-**AskQuestionView (POST /api/ask-question/)**:
-1.  **Input**: Receives a JSON payload `{"question": "..."}`.
-2.  **Validation**: Checks if the question is provided.
-3.  **Processing**: Calls `RAGService().handle_query(question)` to get the answer.
-4.  **Error Handling**: Catches errors (e.g., missing index files, LLM failures) and returns appropriate HTTP status codes.
-5.  **Output**: Returns a JSON response `{"answer": "...", "sources": [...]}`.
+The main view here is 'AskQuestionView'. When a user sends a question:
+1. It validates that the question actually exists.
+2. It passes the question to our RAG Service (the brain of the operation) to get an answer.
+3. If everything goes well, it returns the answer and sources as a neat JSON response.
+4. If something goes wrong (like a missing file), it handles the error gracefully.
 
-This view keeps the "Controller" logic thin by delegating heavy lifting to the Service layer (`rag_service.py`).
+I've kept this file simple intentionally - it delegates the heavy lifting to the service layer.
 """
 
 from rest_framework.views import APIView

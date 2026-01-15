@@ -1,16 +1,14 @@
 """
 Unit Tests for the Assistant App.
 
-EXPLANATION:
-This file is where we write automated tests to ensure our code works as expected.
+This is where I write automated tests to make sure everything is working as expected.
 
-What should be tested here?
-1.  **Models**: Verify that `KnowledgeDocument` creates correctly.
-2.  **Services**: Test `IngestionService` (does it chunk text?) and `RAGService` (does it return chunks?).
-3.  **Views**: Test the API endpoint `POST /api/ask-question/` for 200 OK and valid JSON response.
+I use this to verify things like:
+1. Are the models creating records correctly?
+2. Is the Ingestion Service correctly splitting the text?
+3. Does the API return a 200 OK when we send a valid question?
 
-Running tests:
-`python manage.py test`
+It's good practice to keep tests here so we can run 'python manage.py test' and catch bugs early.
 """
 
 from django.test import TestCase

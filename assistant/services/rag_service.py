@@ -1,19 +1,17 @@
 """
 RAG (Retrieval-Augmented Generation) Service - The Core Brain.
 
-EXPLANATION:
-This service implements the logic to answer user questions using the Knowledge Base.
+This is where the magic happens. This service answers user questions by looking up facts 
+in our Knowledge Base.
 
-It uses a **Hybrid Search** strategy:
-1.  **Vector Search (FAISS)**: Finds text that is *semantically* similar (e.g., "powerhouse" -> "mitochondria").
-2.  **Keyword Search (BM25)**: Finds text with *exact* matching terms (e.g., "Golgi Apparatus").
+I've implemented a Hybrid Search strategy here:
+1. It uses Vector Search (FAISS) to find concepts that are semantically similar.
+2. It uses Keyword Search (BM25) to find exact matches for technical terms.
 
-**The Pipeline:**
-1.  **Retrieve**: Get top results from both FAISS and BM25.
-2.  **Fuse**: Use Reciprocal Rank Fusion (RRF) to combine these results into a single ranked list.
-3.  **Augment**: Take the top 5 chunks and create a prompt: "Context: [text]... Question: [user input]".
-4.  **Generate**: Send this prompt to Meta's Llama-3.2-3B model via HuggingFace API.
-5.  **Log**: Save the interaction for future analysis.
+The Pipeline works like this:
+First, I retrieve the best matches from both search engines. Then, I use a "Fusion" technique 
+to combine them into a single list of best results. I take the top 5 chunks, feed them into 
+the Llama-3.2 model along with the user's question, and get back a highly accurate answer.
 """
 
 import os

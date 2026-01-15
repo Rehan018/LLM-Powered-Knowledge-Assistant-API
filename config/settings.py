@@ -1,18 +1,16 @@
 """
 Django settings for the Knowledge Assistant API project.
 
-EXPLANATION:
-This file is the central configuration hub for the entire Django project.
-It handles:
-1.  **Security**: SECRET_KEY, DEBUG mode, and ALLOWED_HOSTS.
-2.  **Application Definition**: Registers 'assistant' app and third-party libraries (rest_framework).
-3.  **Database**: Configures SQLite for storing KnowledgeDocument and InteractionLog records.
-4.  **Static/Media Files**: Defines paths for storing uploaded PDFs (data/knowledge_base).
-5.  **Environment Variables**: Loads API keys (HuggingFace) and sensitive data from .env file.
-6.  **Custom Settings**: Defines paths for FAISS index and Knowledge Base directory.
+Here I have configured the core settings for the project. Think of this file as the central 
+control room where I define how the application behaves.
 
-This file ensures the application knows how to connect to the database, where to find files,
-and how to authenticate with external services like HuggingFace.
+I am handling a few key things here:
+1. Security settings like the Secret Key and Debug mode.
+2. Registering our 'assistant' app so Django knows it exists.
+3. Configuring the SQLite database to store our documents and logs.
+4. Setting up paths for where our PDFs and FAISS index files will be saved.
+
+I also set it up to load the HuggingFace API key from the .env file to keep it secure.
 """
 
 import os

@@ -1,16 +1,11 @@
 """
 ASGI config for the Knowledge Assistant API project.
 
-EXPLANATION:
-ASGI (Asynchronous Server Gateway Interface) is the spiritual successor to WSGI, 
-designed to handle asynchronous workloads.
+ASGI stands for Asynchronous Server Gateway Interface. It is the modern sibling of WSGI 
+that allows us to handle multiple requests at the same time (asynchronously).
 
-Roles of this file:
-1.  **Async Entry Point**: Allows the application to handle concurrent requests (non-blocking).
-2.  **Modern Features**: Required for WebSockets, HTTP/2, and long-polling (though not strictly used in this simple API).
-3.  **Performance**: Enables higher concurrency if deployed with an ASGI server like Uvicorn or Daphne.
-
-While our current Views are synchronous, having ASGI config ready ensures the project is future-proof for async features.
+Although our simple API is mostly synchronous right now, having this file ready means 
+we can easily add real-time features like WebSockets in the future without changing the architecture.
 """
 
 import os

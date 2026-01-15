@@ -1,15 +1,12 @@
 """
 Management Command for Knowledge Base Ingestion.
 
-EXPLANATION:
-This file exposes our `IngestionService` to the command line interface (CLI).
-It allows admins/developers to trigger the ingestion process by running:
-`python manage.py ingest_kb`
+This file allows me to run the ingestion process directly from the terminal using:
+'python manage.py ingest_kb'
 
-Why is this a separate command?
-- Ingestion is heavy (parsing PDFs, generating embeddings).
-- It shouldn't happen during a web request (which would time out).
-- It's a maintenance task run whenever new documents are added.
+I made this a separate command because processing PDFs and generating embeddings 
+is a heavy task. We don't want to do this while a user is waiting for a web page to load. 
+It's meant to be run as a background task or maintenance script.
 """
 
 from django.core.management.base import BaseCommand

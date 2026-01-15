@@ -1,20 +1,14 @@
 """
 Knowledge Base Ingestion Service.
 
-EXPLANATION:
-This service handles the "ETL" (Extract, Transform, Load) process for our Knowledge Base.
+This service handles the heavy lifting of preparing our data aka the "ETL" process.
 
-1.  **Extract**: Reads PDF files from `data/knowledge_base/` using `PyPDF2`.
-2.  **Transform**:
-    - Cleans and formats text.
-    - **Chunking**: Splits long text into smaller, overlapping chunks (1000 chars) to fit into the LLM's context window.
-    - **Embedding**: Converts text chunks into numerical vectors using `SentenceTransformer`.
-3.  **Load**:
-    - Saves the Vector Index to disk (FAISS) for semantic search.
-    - Saves the Tokenized Corpus to disk (pickle) for BM25 keyword search.
-    - Stores metadata in the SQLite database.
+It basically does three things:
+1. Extract: It reads the raw PDF files from our data folder.
+2. Transform: It cleans up the text and chops it into smaller pieces called "chunks". This is crucial because our AI model has a limit on how much text it can read at once. It then turns these chunks into mathematical vectors (embeddings).
+3. Load: Finally, it saves these vectors into a FAISS index (for fast searching) and a BM25 index (for keyword matching).
 
-This runs offline (via `ingest_kb.py`) so the online API is fast.
+We usually run this once when we add new documents, so the main API can stay fast and lightweight.
 """
 
 import os

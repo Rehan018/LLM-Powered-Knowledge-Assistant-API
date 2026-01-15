@@ -1,18 +1,12 @@
 """
 Database Models for the Knowledge Assistant Application.
 
-EXPLANATION:
-This file defines the data structure for our application using Django's ORM.
+Here I have defined the data structures (models) for our application. 
 
-1. **KnowledgeDocument**:
-   - Represents a PDF file that has been uploaded and processed.
-   - Tracks the file name, path, upload time, and processing status.
-   - Useful for managing the Knowledge Base and ensuring files aren't re-processed unnecessarily.
+I've created two main models:
+1. KnowledgeDocument: This tracks all the PDF files we've uploaded. It keeps a record of the filename, path, and whether we've finished processing it. This helps us avoid re-processing the same file twice.
 
-2. **InteractionLog**:
-   - Acts as an audit trail for the system.
-   - Records every User Question, the generated AI Answer, and the Source Citations.
-   - Enabling this allows for future analytics (e.g., "What are users asking most?").
+2. InteractionLog: This is like our system's diary. It records every question a user asks, the answer our AI gives, and the specific sources it used. This is great for looking back at what users are interested in.
 """
 
 from django.db import models
