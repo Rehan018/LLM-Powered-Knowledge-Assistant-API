@@ -1,3 +1,22 @@
+"""
+Knowledge Base Ingestion Service.
+
+EXPLANATION:
+This service handles the "ETL" (Extract, Transform, Load) process for our Knowledge Base.
+
+1.  **Extract**: Reads PDF files from `data/knowledge_base/` using `PyPDF2`.
+2.  **Transform**:
+    - Cleans and formats text.
+    - **Chunking**: Splits long text into smaller, overlapping chunks (1000 chars) to fit into the LLM's context window.
+    - **Embedding**: Converts text chunks into numerical vectors using `SentenceTransformer`.
+3.  **Load**:
+    - Saves the Vector Index to disk (FAISS) for semantic search.
+    - Saves the Tokenized Corpus to disk (pickle) for BM25 keyword search.
+    - Stores metadata in the SQLite database.
+
+This runs offline (via `ingest_kb.py`) so the online API is fast.
+"""
+
 import os
 import PyPDF2
 import faiss

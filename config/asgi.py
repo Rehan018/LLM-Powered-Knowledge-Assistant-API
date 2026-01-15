@@ -1,10 +1,16 @@
 """
-ASGI config for config project.
+ASGI config for the Knowledge Assistant API project.
 
-It exposes the ASGI callable as a module-level variable named ``application``.
+EXPLANATION:
+ASGI (Asynchronous Server Gateway Interface) is the spiritual successor to WSGI, 
+designed to handle asynchronous workloads.
 
-For more information on this file, see
-https://docs.djangoproject.com/en/6.0/howto/deployment/asgi/
+Roles of this file:
+1.  **Async Entry Point**: Allows the application to handle concurrent requests (non-blocking).
+2.  **Modern Features**: Required for WebSockets, HTTP/2, and long-polling (though not strictly used in this simple API).
+3.  **Performance**: Enables higher concurrency if deployed with an ASGI server like Uvicorn or Daphne.
+
+While our current Views are synchronous, having ASGI config ready ensures the project is future-proof for async features.
 """
 
 import os

@@ -1,3 +1,21 @@
+"""
+RAG (Retrieval-Augmented Generation) Service - The Core Brain.
+
+EXPLANATION:
+This service implements the logic to answer user questions using the Knowledge Base.
+
+It uses a **Hybrid Search** strategy:
+1.  **Vector Search (FAISS)**: Finds text that is *semantically* similar (e.g., "powerhouse" -> "mitochondria").
+2.  **Keyword Search (BM25)**: Finds text with *exact* matching terms (e.g., "Golgi Apparatus").
+
+**The Pipeline:**
+1.  **Retrieve**: Get top results from both FAISS and BM25.
+2.  **Fuse**: Use Reciprocal Rank Fusion (RRF) to combine these results into a single ranked list.
+3.  **Augment**: Take the top 5 chunks and create a prompt: "Context: [text]... Question: [user input]".
+4.  **Generate**: Send this prompt to Meta's Llama-3.2-3B model via HuggingFace API.
+5.  **Log**: Save the interaction for future analysis.
+"""
+
 import os
 import faiss
 import pickle

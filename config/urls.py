@@ -1,18 +1,14 @@
 """
-URL configuration for config project.
+URL configuration for the Knowledge Assistant API project.
 
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/6.0/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+EXPLANATION:
+This file is the specific entry point for routing incoming HTTP requests.
+It defines the top-level URL patterns for the project.
+- It maps the 'admin/' route to Django's built-in admin interface.
+- It includes the 'assistant.urls' module for all requests starting with 'api/'.
+  (e.g., http://localhost:8000/api/ask-question/ -> handled by assistant/urls.py)
+
+Think of this as the "Main Switchboard" that directs traffic to the correct app.
 """
 from django.contrib import admin
 from django.urls import path, include
