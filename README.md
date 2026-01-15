@@ -303,5 +303,5 @@ This project was created as part of a technical assessment.
 ---
 
 <p align="center">
-  Made with ❤️ using Django, FAISS, and HuggingFace
+  Made BY Rehan using Django, FAISS, and HuggingFace
 </p>
